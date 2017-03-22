@@ -1,2 +1,5 @@
 ---
-# tasks file for ansible-role-lock-root
+- name: Create user {{ ansible_user }}
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ ansible_user_shell }}"
