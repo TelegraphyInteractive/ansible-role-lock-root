@@ -18,6 +18,13 @@ ansible_user: ansible
 ansible_user_shell: /bin/bash
 ```
 
+```YAML
+ansible_user_public_keys:
+  - ~/.ssh/id_rsa.pub
+```
+
+It is crucial that a valid SSH key be added for the user since that is the only way to login as the user.
+
 Dependencies
 ------------
 

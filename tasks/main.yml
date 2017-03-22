@@ -3,3 +3,9 @@
   user:
     name: "{{ ansible_user }}"
     shell: "{{ ansible_user_shell }}"
+
+- name: Add authorized keys for {{ deploy_user }} from files
+  authorized_key:
+    user: "{{ deploy_user }}"
+    key: "{{ lookup('file', item) }}"
+  with_items: "{{ ansible_user_public_keys }}"
