@@ -11,7 +11,19 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following are the variables used by the role and their defaults.
+
+```YAML
+ansible_user: ansible
+ansible_user_shell: /bin/bash
+```
+
+```YAML
+ansible_user_public_keys:
+  - ~/.ssh/id_rsa.pub
+```
+
+It is crucial that a valid SSH key be added for the user since that is the only way to login as the user.
 
 Dependencies
 ------------

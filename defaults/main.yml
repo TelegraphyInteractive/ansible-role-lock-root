@@ -1,2 +1,6 @@
 ---
-# defaults file for ansible-role-lock-root
+ansible_user: ansible
+ansible_user_shell: /bin/bash
+
+ansible_user_public_keys:
+  - ~/.ssh/id_rsa.pub
