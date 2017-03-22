@@ -29,14 +29,6 @@ before_install:
     ${run_opts} geerlingguy/docker-${distro}-ansible:latest
     "${init}" > "${container_id}"
 
-  # Create SSH key for testing
-  - >
-    docker exec --tty "$(cat ${container_id})" env TERM=xterm
-    apt-get install ssh
-  - >
-    docker exec --tty "$(cat ${container_id})" env TERM=xterm
-    ssh-keygen -t rsa -N '' -C 'Insecure key for testing' -f ~/.ssh/id_rsa
-
 # Start docker container and run tests
 script:
   # Test role syntax
