@@ -30,7 +30,9 @@ before_install:
     "${init}" > "${container_id}"
 
   # Create SSH key for testing
-  - ssh-keygen -t rsa -N '' -C 'Insecure key for testing' -f ~/.ssh/id_rsa
+  - >
+    docker exec --tty "$(cat ${container_id})" env TERM=xterm
+    ssh-keygen -t rsa -N '' -C 'Insecure key for testing' -f ~/.ssh/id_rsa
 
 # Start docker container and run tests
 script:
