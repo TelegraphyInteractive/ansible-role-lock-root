@@ -30,3 +30,6 @@ tail ${idempotence} \
 | grep -q 'changed=0.*failed=0' \
 && (echo 'Idempotence test: pass' && exit 0) \
 || (echo 'Idempotence test: fail' && exit 1)
+
+# Kill containers
+docker kill "$(cat ${container_id})"
