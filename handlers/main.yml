@@ -1,2 +1,5 @@
 ---
-# handlers file for ansible-role-lock-root
+- name: restart ssh
+  service:
+    name: ssh
+    state: restarted
