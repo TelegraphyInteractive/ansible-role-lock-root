@@ -7,7 +7,7 @@ services:
 
 # Run tests for each supported OS
 #
-# distro: Distro name corresponding to geerlingguy's docker images
+# distro: Distro name corresponding to docker images
 # init: The init system corresponding to the distro
 # run_opts: Additional arguments to pass when creating the docker container
 env:
@@ -18,7 +18,7 @@ env:
 # Provision docker container
 before_install:
   # Pull latest version of the docker image
-  - 'docker pull geerlingguy/docker-${distro}-ansible:latest'
+  - 'docker pull cdriehuys/docker-${distro}-ansible:latest'
 
   # Create random file to store container ID
   - container_id=$(mktemp)
@@ -26,7 +26,7 @@ before_install:
   # Run container with role mounted inside
   - >
     docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro
-    ${run_opts} geerlingguy/docker-${distro}-ansible:latest
+    ${run_opts} cdriehuys/docker-${distro}-ansible:latest
     "${init}" > "${container_id}"
 
 # Start docker container and run tests
