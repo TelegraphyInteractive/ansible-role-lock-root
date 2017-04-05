@@ -1,12 +1,13 @@
 # Pull latest version of the docker image
-docker pull geerlingguy/docker-ubuntu1604-ansible:latest
+docker pull cdriehuys/docker-ubuntu1604-ansible:latest
 
 # Create random file to store container ID
 container_id=$(mktemp)
 
 # Run container with role mounted inside
 docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro \
-${run_opts} geerlingguy/docker-ubuntu1604-ansible:latest \
+--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro \
+cdriehuys/docker-ubuntu1604-ansible:latest \
 /lib/systemd/systemd > "${container_id}"
 
 # Test role syntax
