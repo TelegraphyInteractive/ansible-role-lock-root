@@ -33,3 +33,11 @@
     owner: root
     group: root
     validate: "/usr/sbin/visudo -cf %s"
+
+- name: Disallow password authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: restart ssh
