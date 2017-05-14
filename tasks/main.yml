@@ -1,14 +1,14 @@
 ---
-- name: Create user {{ ansible_user }}
+- name: Create user {{ admin_user }}
   user:
-    name: "{{ ansible_user }}"
-    shell: "{{ ansible_user_shell }}"
+    name: "{{ admin_user }}"
+    shell: "{{ admin_user_shell }}"
 
-- name: Add authorized keys for {{ ansible_user }} from files
+- name: Add authorized keys for {{ admin_user }} from files
   authorized_key:
-    user: "{{ ansible_user }}"
+    user: "{{ admin_user }}"
     key: "{{ lookup('file', item) }}"
-  with_items: "{{ ansible_user_public_keys }}"
+  with_items: "{{ admin_user_public_keys }}"
 
 - name: Create sudoers.d directory
   file:
@@ -28,7 +28,7 @@
 - name: create sudoer file for admin
   template:
     src: sudoers.d.j2
-    dest: "/etc/sudoers.d/{{ ansible_user }}"
+    dest: "/etc/sudoers.d/{{ admin_user }}"
     mode: 0440
     owner: root
     group: root
