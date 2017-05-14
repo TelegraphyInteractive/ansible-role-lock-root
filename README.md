@@ -14,12 +14,12 @@ Role Variables
 The following are the variables used by the role and their defaults.
 
 ```YAML
-ansible_user: ansible
-ansible_user_shell: /bin/bash
+admin_user: ansible
+admin_user_shell: /bin/bash
 ```
 
 ```YAML
-ansible_user_public_keys:
+admin_user_public_keys:
   - ~/.ssh/id_rsa.pub
 ```
 
@@ -40,7 +40,7 @@ again.
     - hosts: all
       remote_user: root
       roles:
-         - { role: cdriehuys.lock-root, ansible_user: ansible }
+         - { role: cdriehuys.lock-root, admin_user: ansible }
 
 License
 -------
