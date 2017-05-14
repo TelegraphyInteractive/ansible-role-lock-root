@@ -1,6 +1,6 @@
 ---
-ansible_user: ansible
-ansible_user_shell: /bin/bash
+admin_user: ansible
+admin_user_shell: /bin/bash
 
-ansible_user_public_keys:
+admin_user_public_keys:
   - ~/.ssh/id_rsa.pub
