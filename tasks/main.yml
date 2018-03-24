@@ -1,4 +1,7 @@
 ---
+- name: Gather facts as root
+  setup:
+
 - name: Create user {{ admin_user }}
   user:
     name: "{{ admin_user }}"
@@ -47,5 +50,13 @@
     dest: /etc/ssh/sshd_config
     regexp: "^PermitRootLogin"
     line: "PermitRootLogin no"
+    state: present
+  notify: restart ssh
+
+- name: Change the ssh port to "{{ ssh_port }}"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^Port"
+    line: "Port {{ devops_ssh_port }}"
     state: present
   notify: restart ssh
