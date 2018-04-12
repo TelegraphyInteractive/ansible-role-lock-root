@@ -53,7 +53,7 @@
     state: present
   notify: restart ssh
 
-- name: Change the ssh port to "{{ ssh_port }}"
+- name: Change the ssh port to "{{ devops_ssh_port }}"
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "^Port"
